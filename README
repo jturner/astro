@@ -24,4 +24,4 @@ similar to the following via cron
 
 find /var/www/htdocs/example/tmp -type f -atime +1 -exec rm {} \;
 
-For additional can be found at: http://astro.calminferno.net/
+Additional information can be found at: http://astro.calminferno.net/
