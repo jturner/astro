@@ -102,8 +102,6 @@ function M.render_json(str)
 end
 
 function prepare()
-    io.input(io.stdin)
-    io.output(io.stdout)
     astro.session.save_session()
     io.write(astro.cookie.set_cookies())
 end
