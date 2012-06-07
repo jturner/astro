@@ -1,0 +1,27 @@
+Astro is a small, simple web framework for Lua. It targets the 5.2
+release and is released under the ISC license.
+
+Astro is designed to be used as a library. Running install.sh will copy
+Astro to the /usr/local/share/lua/5.2 directory. Astro has no external
+dependencies other than a web server to run it from.
+
+Web applications built using Astro must follow a specific directory
+structure. An extremely simple example weblog application is included to
+help get you started. If you keep the current checkout's directory
+structure you should be able to run the example without the need to
+install Astro system wide if don't want to. The example application uses
+the luasqlite3 library found here: http://lua.sqlite.org. You will need
+the trunk version which adds 5.2 support.
+
+Astro uses CGI and has a single index.cgi entry point. The website's
+document root should be set to the public folder. You will want to set
+ASTRO_BASE inside public/.htaccess to the full path of public's parent
+directory. You will also want to make sure db/, db/blog.db and tmp/ are group
+writeable by the web server.
+
+To periodically remove old session files you may want to run something
+similar to the following via cron
+
+find /var/www/htdocs/example/tmp -type f -atime +1 -exec rm {} \;
+
+For additional can be found at: http://astro.calminferno.net/

@@ -1,0 +1,10 @@
+DirectoryIndex index.cgi
+AddHandler cgi-script .cgi
+Options +ExecCGI
+
+setEnv ASTRO_BASE /var/www/htdocs/astro/example/
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.cgi?request=/$1 [L]
