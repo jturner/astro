@@ -71,7 +71,7 @@ function M.route(routes)
             local str = v[2] .. "("
 
             if matches[1] ~= k then
-                str = str .. "matches"
+                str = str .. "table.unpack(matches)"
             end
 
             str = str .. ")"

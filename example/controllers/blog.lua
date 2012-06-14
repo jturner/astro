@@ -41,9 +41,9 @@ function new()
     end
 end
 
-function post(req)
+function post(id)
     local post = Post:new()
-    astro.view.post = post:find_by_id(req[1])
+    astro.view.post = post:find_by_id(id)
 
     if astro.view.post then
         astro.view.render_file("blog/post.tpl")
