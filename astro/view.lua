@@ -22,7 +22,7 @@ function write(...)
     local args, n = {...}, select("#", ...)
 
     for i = 1, n do
-        args[i] = tostring(args[i])
+        args[i] = astro.helper.html_special_chars(tostring(args[i]))
     end
 
     table.insert(buffer, table.concat(args, " "))
