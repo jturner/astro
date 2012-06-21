@@ -56,18 +56,17 @@ local env = {
 
 function M.render_string(str)
     prepare()
-    io.write("content-type: text/html\n\n")
+    io.write("Content-Type: text/html\r\n")
+    io.write("Content-Length: " .. string.len(str) .. "\r\n\r\n")
     io.write(str)
     os.exit()
 end
 
 function M.render_file(file)
-    local base = os.getenv("ASTRO_BASE")
-
-    local wrapper = assert(io.open(base .. "views/global/wrapper.tpl"))
+    local wrapper = assert(io.open(astro.base .. "views/global/wrapper.tpl"))
     wrapper = wrapper:read("*a")
 
-    local view = assert(io.open(base .. "views/" .. file))
+    local view = assert(io.open(astro.base .. "views/" .. file))
     view = view:read("*a")
 
     wrapper = string.gsub(wrapper, "{{maincontent}}\n", function ()
@@ -89,14 +88,16 @@ function M.render_file(file)
     end)
 
     prepare()
-    io.write("content-type: text/html\n\n")
+    io.write("Content-Type: text/html\r\n")
+    io.write("Content-Length: " .. string.len(wrapper) .. "\r\n\r\n")
     io.write(wrapper)
     os.exit()
 end
 
 function M.render_json(str)
     prepare()
-    io.write("content-type: application/json\n\n")
+    io.write("Content-Type: application/json\r\n")
+    io.write("Content-Length: " .. string.len(str) .. "\r\n\r\n")
     io.write(str)
     os.exit()
 end

@@ -19,14 +19,12 @@ local M = {
     sessions = {}
 }
 
-local base = os.getenv("ASTRO_BASE")
-
 function M.start_session()
     local chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     local session = astro.cookie.get_cookie("ASTROSESSID")
 
     if session then
-        astro.tincan.load(base .. "tmp/sess_" .. session)
+        astro.tincan.load(astro.base .. "tmp/sess_" .. session)
 
         if astro.tincan.exists("session") then
             M.sessions = astro.tincan.get("session")
@@ -41,7 +39,7 @@ function M.start_session()
         end
 
         astro.cookie.set_cookie("ASTROSESSID", session)
-        astro.tincan.load(base .. "tmp/sess_" .. session)
+        astro.tincan.load(astro.base .. "tmp/sess_" .. session)
     end
 
     M.id = session
@@ -50,7 +48,7 @@ end
 function M.save_session()
     if M.id then
         astro.tincan.set("session", M.sessions)
-        astro.tincan.save(base .. "tmp/sess_" .. M.id)
+        astro.tincan.save(astro.base .. "tmp/sess_" .. M.id)
     end
 end
 

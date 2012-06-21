@@ -4,9 +4,8 @@ local M = {
     body = nil
 }
 
-local base = os.getenv("ASTRO_BASE")
 local sqlite3 = require("lsqlite3")
-local db = assert(sqlite3.open(base .. "db/blog.db"))
+local db = assert(sqlite3.open(astro.base .. "db/blog.db"))
 
 function M:new(o)
     o = o or {}

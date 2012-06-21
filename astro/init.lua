@@ -27,6 +27,7 @@ local M = {
 local request = "/"
 
 function M.init()
+    M.base = os.getenv("DOCUMENT_ROOT") .. "/../"
     local method = string.upper(os.getenv("REQUEST_METHOD"))
     local get = os.getenv("QUERY_STRING") or ""
     local post = ""
@@ -59,15 +60,14 @@ end
 
 function M.route(routes)
     routes = routes or {}
-    local base = os.getenv("ASTRO_BASE")
 
     for k, v in pairs(routes) do
         -- global scope so controllers can access request params
         matches = { string.match(request, "^" .. k .. "$") }
 
         if #matches > 0 then
-            package.path = package.path .. ";" .. base .. "models/?.lua"
-            dofile(base .. "controllers/" .. v[1] .. '.lua')
+            package.path = package.path .. ";" .. M.base .. "models/?.lua"
+            dofile(M.base .. "controllers/" .. v[1] .. '.lua')
             local str = v[2] .. "("
 
             if matches[1] ~= k then
@@ -81,7 +81,7 @@ function M.route(routes)
         end
     end
 
-    io.write("status: 404 Not Found\n")
+    io.write("Status: 404 Not Found\r\n")
     M.view.render_file("error/404.tpl")
 end
 

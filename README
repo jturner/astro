@@ -14,10 +14,9 @@ uses the luasqlite3 library found here: http://lua.sqlite.org. You will
 need the trunk version which adds 5.2 support.
 
 Astro uses CGI and has a single index.cgi entry point. The website's
-document root should be set to the public folder. You will want to set
-ASTRO_BASE inside public/.htaccess to the full path of public's parent
-directory. You will also want to make sure db/, db/blog.db and tmp/ are
-group writeable by the web server.
+document root should be set to the public folder. You will also want to
+make sure db/, db/blog.db and tmp/ are group writeable by the web
+server.
 
 To periodically remove old session files you may want to run something
 similar to the following via cron

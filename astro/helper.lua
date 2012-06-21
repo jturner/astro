@@ -53,13 +53,13 @@ function M.html_special_chars(str)
 end
 
 function M.redirect(str)
-    io.write("status: 302 Found\n")
+    io.write("Status: 302 Found\r\n")
 
     if string.match(str, "http(s?)://") then
-        io.write("location: " .. str .. "\n")
+        io.write("Location: " .. str .. "\r\n")
     else
         local protocol = os.getenv("HTTPS") == "on" and "https://" or "http://"
-        io.write("location: " .. protocol .. os.getenv("HTTP_HOST") .. str .. "\n")
+        io.write("Location: " .. protocol .. os.getenv("HTTP_HOST") .. str .. "\r\n")
     end
 
     astro.view.render_string("302 Found")

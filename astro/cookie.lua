@@ -48,22 +48,22 @@ function M.set_cookies()
     local headers = {}
 
     for k, v in pairs(cookiejar) do
-        local header = "set-cookie: " .. k .. "=" .. astro.helper.url_encode(v.value)
+        local header = "Set-Cookie: " .. k .. "=" .. astro.helper.url_encode(v.value)
 
         if v.options.expire then
-            header = header .. ";expires=" .. os.date("!%a, %d-%b-%Y %H:%M:%S GMT", v.options.expire)
+            header = header .. "; Expires=" .. os.date("!%a, %d-%b-%Y %H:%M:%S GMT", v.options.expire)
         end
 
         if v.options.path then
-            header = header .. ";path=" .. v.options.path
+            header = header .. "; Path=" .. v.options.path
         end
 
         if v.options.domain then
-            header = header .. ";domain=" .. v.options.domain
+            header = header .. "; Domain=" .. v.options.domain
         end
 
         if v.options.secure then
-            header = header .. ";secure"
+            header = header .. "; Secure"
         end
 
         table.insert(headers, header)
@@ -71,7 +71,7 @@ function M.set_cookies()
 
     if #headers > 0 then
         table.insert(headers, "")
-        return table.concat(headers, "\n")
+        return table.concat(headers, "\r\n")
     else
         return ""
     end
