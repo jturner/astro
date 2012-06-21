@@ -5,4 +5,4 @@ Options +ExecCGI
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.cgi?request=/$1 [L]
+RewriteRule ^(.*)$ index.cgi [L]

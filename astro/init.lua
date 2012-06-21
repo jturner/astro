@@ -24,7 +24,7 @@ local M = {
     view = require("astro.view")
 }
 
-local request = "/"
+local request = os.getenv("REQUEST_URI") or "/"
 
 function M.init()
     M.base = os.getenv("DOCUMENT_ROOT") .. "/../"
@@ -49,9 +49,9 @@ function M.init()
         M.cookie.cookies[k] = M.helper.url_decode(v)
     end
 
-    if M.get.request then
-        request = M.get.request
+    request = string.gsub(request, "%?.*$", "")
 
+    if request ~= "/" then
         if string.sub(request, -1) == "/" then
             request = string.sub(request, 1, -2)
         end
