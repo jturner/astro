@@ -18,7 +18,12 @@ local M = {}
 
 local buffer = {}
 
-function write(...)
+local function prepare()
+    astro.session.save_session()
+    io.write(astro.cookie.set_cookies())
+end
+
+local function write(...)
     local args, n = {...}, select("#", ...)
 
     for i = 1, n do
@@ -100,11 +105,6 @@ function M.render_json(str)
     io.write("Content-Length: " .. string.len(str) .. "\r\n\r\n")
     io.write(str)
     os.exit()
-end
-
-function prepare()
-    astro.session.save_session()
-    io.write(astro.cookie.set_cookies())
 end
 
 return M
