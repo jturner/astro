@@ -1,3 +1,4 @@
+<p style="float: right;"><a href="/logout">Logout</a></p>
 <h2>New blog post</h2>
 <% if self.error then %>
 <p>All fields are required!</p>

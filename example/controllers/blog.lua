@@ -41,6 +41,12 @@ function new()
     end
 end
 
+function logout()
+    astro.session.start_session()
+    astro.session.sessions.logged_in = nil
+    astro.helper.redirect("/")
+end
+
 function post(id)
     local post = Post:new()
     astro.view.post = post:find_by_id(id)

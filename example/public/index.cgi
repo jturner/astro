@@ -7,5 +7,6 @@ astro.init()
 astro.route({
     ["/"] = { "blog", "index" },
     ["/new"] = { "blog" , "new" },
+    ["/logout"] = { "blog", "logout" },
     ["/(%d+)"] = { "blog", "post" }
 })
