@@ -31,7 +31,10 @@ function M.start_session()
         end
     else
         session = ""
-        math.randomseed(os.time())
+
+        local urandom = assert(io.open("/dev/urandom"))
+        math.randomseed(tonumber(os.time() .. string.byte(urandom:read(16))))
+        urandom:close()
 
         for i = 1, 26 do
             local char = math.random(string.len(chars))
