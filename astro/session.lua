@@ -34,7 +34,7 @@ function M.start_session()
 
         local urandom = assert(io.open("/dev/urandom"))
         local bytes = { string.byte(urandom:read(16), 1, -1) }
-        math.randomseed(tonumber(os.time() .. table.concat(bytes)))
+        math.randomseed(os.time() + tonumber(table.concat(bytes)))
         urandom:close()
 
         for i = 1, 26 do
