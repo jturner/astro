@@ -19,6 +19,7 @@ local M = {
     post = {},
     cookie = require("astro.cookie"),
     helper = require("astro.helper"),
+    json = require("astro.dkjson"),
     session = require("astro.session"),
     tincan = require("astro.tincan"),
     view = require("astro.view")
