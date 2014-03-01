@@ -10,8 +10,8 @@ structure. An extremely simple example weblog application is included to
 help get you started. If you keep the current checkout's directory
 structure you should be able to run the example without the need to
 install Astro system wide if you don't want to. The example application
-uses the luasqlite3 library found here: http://lua.sqlite.org. You will
-need the trunk version which adds 5.2 support.
+uses the luasqlite3 library found here:
+https://github.com/jturner/luasqlite3.
 
 Astro uses CGI and has a single index.cgi entry point. The website's
 document root should be set to the public folder. You will also want to
