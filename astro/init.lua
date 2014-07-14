@@ -35,7 +35,7 @@ function M.init()
     local cookie = os.getenv("HTTP_COOKIE") or ""
 
     if method == "POST" then
-        post = io.read(tonumber(os.getenv("CONTENT_LENGTH")))
+        post = io.read(tonumber(os.getenv("CONTENT_LENGTH"))) or ""
     end
 
     for k, v in string.gmatch(get .. "&", "(.-)%=(.-)%&") do
