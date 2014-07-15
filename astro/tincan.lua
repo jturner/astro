@@ -106,4 +106,9 @@ function M.save(file)
     file:close()
 end
 
+function M.destroy(file)
+    file = file or "tincan.db"
+    os.remove(file)
+end
+
 return M

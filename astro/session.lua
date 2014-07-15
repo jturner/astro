@@ -56,4 +56,14 @@ function M.save_session()
     end
 end
 
+function M.destroy_session()
+    if M.id then
+        astro.cookie.delete_cookie("ASTROSESSID")
+        astro.tincan.destroy(astro.base .. "tmp/sess_" .. M.id)
+
+        M.id = nil
+        M.sessions = {}
+    end
+end
+
 return M
