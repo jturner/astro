@@ -1,6 +1,8 @@
 Astro is a small, simple web framework for Lua. It targets the 5.2
 release and is released under the ISC license.
 
+Project moved to sourcehut: https://git.sr.ht/~jturner/astro
+
 Astro is designed to be used as a library. Running install.sh will copy
 Astro to the /usr/local/share/lua/5.2 directory. Astro has no external
 dependencies other than a web server to run it from.
